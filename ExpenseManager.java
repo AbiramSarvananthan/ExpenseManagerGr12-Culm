@@ -8,6 +8,7 @@ public class ExpenseManager {
     private List<Expense> expenses = new ArrayList<>();
 
     public void addExpense(Expense expense) {
+        validateDateFormat(expense.getDate());
         expenses.add(expense);
     }
 
@@ -33,7 +34,6 @@ public class ExpenseManager {
         return expenses.stream().mapToDouble(Expense::getPrice).sum();
     }
 
-    // Linear search for an expense by description
     public Expense searchExpenseByDescription(String description) {
         for (Expense expense : expenses) {
             if (expense.getDescription().equalsIgnoreCase(description)) {
@@ -47,14 +47,12 @@ public class ExpenseManager {
         return expenses;
     }
 
-    // Bubble sort implementation for sorting by price
     public List<Expense> sortExpensesByPriceBubbleSort() {
         List<Expense> sorted = new ArrayList<>(expenses);
         int n = sorted.size();
         for (int i = 0; i < n - 1; i++) {
             for (int j = 0; j < n - i - 1; j++) {
                 if (sorted.get(j).getPrice() > sorted.get(j + 1).getPrice()) {
-                    // Swap
                     Expense temp = sorted.get(j);
                     sorted.set(j, sorted.get(j + 1));
                     sorted.set(j + 1, temp);
@@ -64,7 +62,6 @@ public class ExpenseManager {
         return sorted;
     }
 
-    // Recursive method to calculate total expenses
     public double calculateTotalExpensesRecursive() {
         return calculateTotalExpensesRecursiveHelper(expenses, 0);
     }
@@ -76,8 +73,10 @@ public class ExpenseManager {
         return expenses.get(index).getPrice() + calculateTotalExpensesRecursiveHelper(expenses, index + 1);
     }
 
-    // Get expenses within a specific date range
     public List<Expense> getExpensesWithinDateRange(String startDate, String endDate) {
+        validateDateFormat(startDate);
+        validateDateFormat(endDate);
+
         List<Expense> filtered = new ArrayList<>();
         try {
             LocalDate start = LocalDate.parse(startDate);
@@ -86,7 +85,7 @@ public class ExpenseManager {
             for (Expense expense : expenses) {
                 LocalDate expenseDate = LocalDate.parse(expense.getDate());
                 if ((expenseDate.isEqual(start) || expenseDate.isAfter(start)) &&
-                        (expenseDate.isEqual(end) || expenseDate.isBefore(end))) {
+                    (expenseDate.isEqual(end) || expenseDate.isBefore(end))) {
                     filtered.add(expense);
                 }
             }
@@ -94,5 +93,11 @@ public class ExpenseManager {
             throw new IllegalArgumentException("Invalid date format. Use YYYY-MM-DD.");
         }
         return filtered;
+    }
+
+    private void validateDateFormat(String date) {
+        if (!date.matches("\\d{4}-\\d{2}-\\d{2}")) {
+            throw new IllegalArgumentException("Invalid date format. Year must have 4 digits. Use YYYY-MM-DD.");
+        }
     }
 }
