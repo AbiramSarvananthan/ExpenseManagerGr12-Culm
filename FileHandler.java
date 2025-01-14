@@ -1,13 +1,32 @@
 import java.io.*;
 import java.util.*;
 
-public class FileHandler {
+class FileHandler {
     public static void saveExpensesToFile(List<Expense> expenses, String fileName) throws IOException {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName))) {
             for (Expense expense : expenses) {
-                writer.write(expense.getPrice() + "," + expense.getDate() + "," + expense.getDescription() + "," + expense.getCategory());
+                writer.write(expense.getPrice() + "," + expense.getDate() + "," + expense.getDescription() + ","
+                        + expense.getCategory());
                 writer.newLine();
             }
         }
+    }
+
+    public static List<Expense> loadExpensesFromFile(String fileName) throws IOException {
+        List<Expense> expenses = new ArrayList<>();
+        try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                String[] parts = line.split(",");
+                if (parts.length == 4) {
+                    double price = Double.parseDouble(parts[0]);
+                    String date = parts[1];
+                    String description = parts[2];
+                    String category = parts[3];
+                    expenses.add(new Expense(price, date, description, category));
+                }
+            }
+        }
+        return expenses;
     }
 }
