@@ -35,7 +35,7 @@ public class Expense implements Comparable<Expense> {
 
     public static boolean isValidDate(String date) {
         // Regular expression to check if the date is in the format YYYY-MM-DD
-        if (!date.matches("\\d{4}-\\d{2}-\\d{2}")) {
+         if (!date.matches("(20|19)\\d{2}-\\d{2}-\\d{2}")) { //also added a check to restrict dates to be in either 21th or 20th century
             return false;
         }
 
