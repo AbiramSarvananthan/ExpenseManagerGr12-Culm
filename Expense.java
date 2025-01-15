@@ -9,7 +9,7 @@ public class Expense implements Comparable<Expense> {
 
     public Expense(double price, String date, String description, String category) throws IllegalArgumentException {
         if (!isValidDate(date)) {
-            throw new IllegalArgumentException("Invalid date format. Use YYYY-MM-DD.");
+            throw new IllegalArgumentException("Invalid date format. Use YYYY-MM-DD, and ensure the year has four digits.");
         }
         this.price = price;
         this.date = date;
@@ -34,6 +34,12 @@ public class Expense implements Comparable<Expense> {
     }
 
     public static boolean isValidDate(String date) {
+        // Regular expression to check if the date is in the format YYYY-MM-DD
+        if (!date.matches("\\d{4}-\\d{2}-\\d{2}")) {
+            return false;
+        }
+
+        // Use SimpleDateFormat for strict validation
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         dateFormat.setLenient(false);
         try {
