@@ -9,6 +9,10 @@ public class ExpenseManager {
 
     public void addExpense(Expense expense) {
         validateDateFormat(expense.getDate());
+        //finish ID creation if the expense is not read from file
+        if(expense.getIsNewlyCreated()){
+            expense.setID(expense.getID()+Integer.toString(duplicatedID(expense.getID()))); //Attempt to generate a unique ID       
+        }
         expenses.add(expense);
     }
 
@@ -41,6 +45,19 @@ public class ExpenseManager {
             }
         }
         return null;
+    }
+    
+    //Add this method to help generate unique ID
+    //Should be called when adding a new entry to ensure the construct of a valid ID
+    public int duplicatedID(String id){
+        int duplicateAmount=0;
+        for(Expense i:expenses){    //Linear search through the program, not the most efficient way
+            if(id.equals(i.getID().substring(0,(i.getID().length()-1)))){
+                duplicateAmount++;
+            }
+        }
+        
+        return duplicateAmount;
     }
 
     public List<Expense> getExpenses() {

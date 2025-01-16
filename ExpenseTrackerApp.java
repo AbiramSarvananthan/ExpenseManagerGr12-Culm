@@ -521,6 +521,9 @@ public class ExpenseTrackerApp extends javax.swing.JFrame {
                 lblFileWarning.setText("Expenses loaded from file successfully!\n");
                 lblFileWarning.setForeground(Color.blue);
                 lblFileWarning.setVisible(true);
+                
+                //after successful load
+                updateDisplay(manager.getExpenses());
             } catch (IOException ex) {
                 lblFileWarning.setText("Error loading expenses from file.\n");
                 lblFileWarning.setForeground(Color.red);
@@ -553,6 +556,11 @@ public class ExpenseTrackerApp extends javax.swing.JFrame {
         // TODO add your handling code here:
         String startDate = txtStartDate.getText();
         String endDate = txtEndDate.getText();
+        //QoL, if endDate is not put assuming the user wants to see the expense on that specific day
+        if(endDate.isBlank()){
+            endDate=startDate;
+            txtEndDate.setText(endDate);
+        }
 
         try {
             //Replace below with display update method

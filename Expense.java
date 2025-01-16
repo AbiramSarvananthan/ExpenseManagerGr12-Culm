@@ -6,6 +6,8 @@ public class Expense implements Comparable<Expense> {
     private String date;
     private String description;
     private String category;
+    private String id;
+    private boolean isNewlyCreated; //to extinguish between a newly created Expense and one read from the file
 
     public Expense(double price, String date, String description, String category) throws IllegalArgumentException {
         if (!isValidDate(date)) {
@@ -15,8 +17,29 @@ public class Expense implements Comparable<Expense> {
         this.date = date;
         this.description = description;
         this.category = category;
+        
+        //Generate an basic ID 
+        String[] dateSplited=date.split("-");
+        this.id=dateSplited[0]+category.substring(0,1).toUpperCase(); //YYYY<Initial of the category in capital>
+        
+        //Newly created
+        isNewlyCreated=true;
     }
-
+    
+    //overloading constructor
+    public Expense(double price, String date, String description, String category, String id) throws IllegalArgumentException {
+        if (!isValidDate(date)) {
+            throw new IllegalArgumentException("Invalid date format. Use YYYY-MM-DD, and ensure the year has four digits.");
+        }
+        this.price = price;
+        this.date = date;
+        this.description = description;
+        this.category = category;
+        //read from file
+        this.id=id;
+        isNewlyCreated=false;   
+    }
+    
     public double getPrice() {
         return price;
     }
@@ -31,6 +54,18 @@ public class Expense implements Comparable<Expense> {
 
     public String getCategory() {
         return category;
+    }
+    
+    protected void setID(String id){
+        this.id=id;
+    }
+    
+    public String getID(){
+        return id;
+    }
+    
+    public boolean getIsNewlyCreated(){
+        return isNewlyCreated;
     }
 
     public static boolean isValidDate(String date) {
@@ -57,6 +92,8 @@ public class Expense implements Comparable<Expense> {
 
     @Override
     public String toString() {
-        return String.format("Price: %.2f, Date: %s, Description: %s, Category: %s", price, date, description, category);
+        String output="["+id+"] ";
+        output+=String.format("Price: %.2f, Date: %s, Description: %s, Category: %s", price, date, description, category);
+        return output;
     }
 }

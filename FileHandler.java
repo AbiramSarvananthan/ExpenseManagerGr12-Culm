@@ -6,7 +6,7 @@ class FileHandler {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName))) {
             for (Expense expense : expenses) {
                 writer.write(expense.getPrice() + "," + expense.getDate() + "," + expense.getDescription() + ","
-                        + expense.getCategory());
+                        + expense.getCategory() + "," + expense.getID());
                 writer.newLine();
             }
         }
@@ -18,12 +18,13 @@ class FileHandler {
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] parts = line.split(",");
-                if (parts.length == 4) {
+                if (parts.length == 5) {
                     double price = Double.parseDouble(parts[0]);
                     String date = parts[1];
                     String description = parts[2];
                     String category = parts[3];
-                    expenses.add(new Expense(price, date, description, category));
+                    String id = parts[4];
+                    expenses.add(new Expense(price, date, description, category, id));
                 }
             }
         }
