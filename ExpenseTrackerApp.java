@@ -52,6 +52,8 @@ public class ExpenseTrackerApp extends javax.swing.JFrame {
         txtADescription = new javax.swing.JTextArea();
         btnNewEntry = new javax.swing.JButton();
         lblNewEntryWarning = new javax.swing.JLabel();
+        lblEntryTitle = new javax.swing.JLabel();
+        txtEntryTitle = new javax.swing.JTextField();
         pnlStoredEntries = new javax.swing.JPanel();
         pnlFileControls = new javax.swing.JPanel();
         btnLoadFromFile = new javax.swing.JButton();
@@ -108,12 +110,21 @@ public class ExpenseTrackerApp extends javax.swing.JFrame {
         lblNewEntryWarning.setForeground(new java.awt.Color(255, 0, 0));
         lblNewEntryWarning.setText("Warning");
 
+        lblEntryTitle.setText("Title:");
+
+        txtEntryTitle.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtEntryTitleActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout pnlNewEntryLayout = new javax.swing.GroupLayout(pnlNewEntry);
         pnlNewEntry.setLayout(pnlNewEntryLayout);
         pnlNewEntryLayout.setHorizontalGroup(
             pnlNewEntryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlNewEntryLayout.createSequentialGroup()
                 .addGroup(pnlNewEntryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblNewEntryWarning, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(pnlNewEntryLayout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(pnlNewEntryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -123,24 +134,26 @@ public class ExpenseTrackerApp extends javax.swing.JFrame {
                                 .addComponent(cmbxCategory, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(pnlNewEntryLayout.createSequentialGroup()
-                                .addGroup(pnlNewEntryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblDescription)
-                                    .addGroup(pnlNewEntryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addGroup(pnlNewEntryLayout.createSequentialGroup()
-                                            .addComponent(lblPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(txtPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(pnlNewEntryLayout.createSequentialGroup()
-                                            .addComponent(lblDate)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(txtDate, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(pnlNewEntryLayout.createSequentialGroup()
-                                        .addGap(12, 12, 12)
-                                        .addComponent(btnNewEntry, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(0, 0, Short.MAX_VALUE))))
-                    .addComponent(lblNewEntryWarning, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(lblDescription)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(pnlNewEntryLayout.createSequentialGroup()
+                                .addComponent(lblPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(txtPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(pnlNewEntryLayout.createSequentialGroup()
+                                .addComponent(lblDate)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(txtDate, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(pnlNewEntryLayout.createSequentialGroup()
+                                .addComponent(lblEntryTitle)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(txtEntryTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addContainerGap())
+            .addGroup(pnlNewEntryLayout.createSequentialGroup()
+                .addGap(28, 28, 28)
+                .addComponent(btnNewEntry, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(36, Short.MAX_VALUE))
         );
         pnlNewEntryLayout.setVerticalGroup(
             pnlNewEntryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -157,12 +170,16 @@ public class ExpenseTrackerApp extends javax.swing.JFrame {
                 .addGroup(pnlNewEntryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblCategory, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cmbxCategory, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(5, 5, 5)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(3, 3, 3)
-                .addComponent(lblDescription)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(4, 4, 4)
+                .addGroup(pnlNewEntryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblEntryTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtEntryTitle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lblDescription)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(25, 25, 25)
                 .addComponent(lblNewEntryWarning)
                 .addGap(18, 18, 18)
@@ -417,7 +434,7 @@ public class ExpenseTrackerApp extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(pnlNewEntry, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(33, 33, 33)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(pnlStoredEntries, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addComponent(lblTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
@@ -474,12 +491,13 @@ public class ExpenseTrackerApp extends javax.swing.JFrame {
             String date = txtDate.getText();
             String description = txtADescription.getText();
             String category = (String) cmbxCategory.getSelectedItem();
+            String title = txtEntryTitle.getText();
 
             if (!Expense.isValidDate(date)) {
                 throw new IllegalArgumentException("Invalid date format. Please use YYYY-MM-DD.");
             }
 
-            manager.addExpense(new Expense(price, date, description, category));
+            manager.addExpense(new Expense(price, date, description, category, title));
             //successfully added a new entry, below merely gives feedbacks to user
             lblNewEntryWarning.setText("Expense added successfully!");
             lblNewEntryWarning.setForeground(Color.blue);
@@ -577,6 +595,10 @@ public class ExpenseTrackerApp extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnDisplayRangeActionPerformed
 
+    private void txtEntryTitleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEntryTitleActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtEntryTitleActionPerformed
+
     //Custom Methods
     
 //    private void updateLstTiles(){
@@ -672,6 +694,7 @@ public class ExpenseTrackerApp extends javax.swing.JFrame {
     private javax.swing.JLabel lblDate;
     private javax.swing.JLabel lblDescription;
     private javax.swing.JLabel lblEndDate;
+    private javax.swing.JLabel lblEntryTitle;
     private javax.swing.JLabel lblFileWarning;
     private javax.swing.JLabel lblNewEntryWarning;
     private javax.swing.JLabel lblPrice;
@@ -689,6 +712,7 @@ public class ExpenseTrackerApp extends javax.swing.JFrame {
     private javax.swing.JTextArea txtAOutput;
     private javax.swing.JTextField txtDate;
     private javax.swing.JTextField txtEndDate;
+    private javax.swing.JTextField txtEntryTitle;
     private javax.swing.JTextField txtPrice;
     private javax.swing.JTextField txtStartDate;
     private javax.swing.JTextField txtTotalExpense;
