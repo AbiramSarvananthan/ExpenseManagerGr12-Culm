@@ -27,6 +27,10 @@ public class ExpenseTrackerApp extends javax.swing.JFrame {
         lblNewEntryWarning.setVisible(false);
         lblFileWarning.setVisible(false);
         lblRangeWarning.setVisible(false);
+        lblSearchWarning.setVisible(false);
+        
+        dlgSaveConfirmWindow.setVisible(false);
+        dlgSaveConfirmWindow.setDefaultCloseOperation(HIDE_ON_CLOSE);
     }
 
     /**
@@ -38,6 +42,11 @@ public class ExpenseTrackerApp extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        dlgSaveConfirmWindow = new javax.swing.JDialog();
+        btnConcle = new javax.swing.JButton();
+        btnConfirm = new javax.swing.JButton();
+        lblInfo = new javax.swing.JLabel();
+        lblConfirmWindownTitle = new javax.swing.JLabel();
         lblTitle = new javax.swing.JLabel();
         pnlNewEntry = new javax.swing.JPanel();
         lblPrice = new javax.swing.JLabel();
@@ -55,10 +64,6 @@ public class ExpenseTrackerApp extends javax.swing.JFrame {
         lblEntryTitle = new javax.swing.JLabel();
         txtEntryTitle = new javax.swing.JTextField();
         pnlStoredEntries = new javax.swing.JPanel();
-        pnlFileControls = new javax.swing.JPanel();
-        btnLoadFromFile = new javax.swing.JButton();
-        btnSaveToFile = new javax.swing.JButton();
-        lblFileWarning = new javax.swing.JLabel();
         pnlDisplayControls = new javax.swing.JPanel();
         btnDateSort = new javax.swing.JButton();
         btnPriceSort = new javax.swing.JButton();
@@ -76,6 +81,76 @@ public class ExpenseTrackerApp extends javax.swing.JFrame {
         btnCalculate = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         txtAOutput = new javax.swing.JTextArea();
+        jTabbedPane1 = new javax.swing.JTabbedPane();
+        pnlFileControls = new javax.swing.JPanel();
+        btnLoadFromFile = new javax.swing.JButton();
+        btnSaveToFile = new javax.swing.JButton();
+        lblFileWarning = new javax.swing.JLabel();
+        pnlSearch = new javax.swing.JPanel();
+        lblTargetID = new javax.swing.JLabel();
+        txtTargetID = new javax.swing.JTextField();
+        lblSearchWarning = new javax.swing.JLabel();
+        btnConfirmSearch = new javax.swing.JButton();
+
+        dlgSaveConfirmWindow.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        dlgSaveConfirmWindow.setTitle("File Save Warning");
+        dlgSaveConfirmWindow.setAlwaysOnTop(true);
+        dlgSaveConfirmWindow.setBounds(new java.awt.Rectangle(0, 0, 373, 130));
+        dlgSaveConfirmWindow.setMinimumSize(new java.awt.Dimension(373, 130));
+        dlgSaveConfirmWindow.setResizable(false);
+
+        btnConcle.setText("Cancle");
+        btnConcle.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConcleActionPerformed(evt);
+            }
+        });
+
+        btnConfirm.setText("Confirm");
+        btnConfirm.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConfirmActionPerformed(evt);
+            }
+        });
+
+        lblInfo.setText("Are you sure you want to save and overwrite the previous file?");
+
+        lblConfirmWindownTitle.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 14)); // NOI18N
+        lblConfirmWindownTitle.setText("WARNING");
+
+        javax.swing.GroupLayout dlgSaveConfirmWindowLayout = new javax.swing.GroupLayout(dlgSaveConfirmWindow.getContentPane());
+        dlgSaveConfirmWindow.getContentPane().setLayout(dlgSaveConfirmWindowLayout);
+        dlgSaveConfirmWindowLayout.setHorizontalGroup(
+            dlgSaveConfirmWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(dlgSaveConfirmWindowLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(dlgSaveConfirmWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(dlgSaveConfirmWindowLayout.createSequentialGroup()
+                        .addComponent(btnConcle, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnConfirm, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, dlgSaveConfirmWindowLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(lblInfo)))
+                .addContainerGap())
+            .addGroup(dlgSaveConfirmWindowLayout.createSequentialGroup()
+                .addGap(147, 147, 147)
+                .addComponent(lblConfirmWindownTitle)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        dlgSaveConfirmWindowLayout.setVerticalGroup(
+            dlgSaveConfirmWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, dlgSaveConfirmWindowLayout.createSequentialGroup()
+                .addGap(11, 11, 11)
+                .addComponent(lblConfirmWindownTitle)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblInfo)
+                .addGap(48, 48, 48)
+                .addGroup(dlgSaveConfirmWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnConfirm)
+                    .addComponent(btnConcle))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -188,49 +263,6 @@ public class ExpenseTrackerApp extends javax.swing.JFrame {
         );
 
         pnlStoredEntries.setBorder(javax.swing.BorderFactory.createTitledBorder("Stored Entries"));
-
-        pnlFileControls.setBorder(javax.swing.BorderFactory.createTitledBorder("File Controls"));
-
-        btnLoadFromFile.setText("Load From File");
-        btnLoadFromFile.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLoadFromFileActionPerformed(evt);
-            }
-        });
-
-        btnSaveToFile.setText("Save To File");
-        btnSaveToFile.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSaveToFileActionPerformed(evt);
-            }
-        });
-
-        lblFileWarning.setFont(new java.awt.Font("Microsoft YaHei UI", 2, 9)); // NOI18N
-        lblFileWarning.setForeground(new java.awt.Color(255, 0, 0));
-        lblFileWarning.setText("Warning");
-
-        javax.swing.GroupLayout pnlFileControlsLayout = new javax.swing.GroupLayout(pnlFileControls);
-        pnlFileControls.setLayout(pnlFileControlsLayout);
-        pnlFileControlsLayout.setHorizontalGroup(
-            pnlFileControlsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlFileControlsLayout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addGroup(pnlFileControlsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnLoadFromFile, javax.swing.GroupLayout.DEFAULT_SIZE, 136, Short.MAX_VALUE)
-                    .addComponent(btnSaveToFile, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(90, Short.MAX_VALUE))
-            .addComponent(lblFileWarning, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        pnlFileControlsLayout.setVerticalGroup(
-            pnlFileControlsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlFileControlsLayout.createSequentialGroup()
-                .addComponent(btnLoadFromFile)
-                .addGap(18, 18, 18)
-                .addComponent(btnSaveToFile)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lblFileWarning)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
 
         pnlDisplayControls.setBorder(javax.swing.BorderFactory.createTitledBorder("Display Controls"));
 
@@ -372,7 +404,7 @@ public class ExpenseTrackerApp extends javax.swing.JFrame {
             .addGroup(pnlTotalExpenseLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lblTotalExpense)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(txtTotalExpense, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(25, 25, 25))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlTotalExpenseLayout.createSequentialGroup()
@@ -392,9 +424,104 @@ public class ExpenseTrackerApp extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        txtAOutput.setEditable(false);
         txtAOutput.setColumns(20);
         txtAOutput.setRows(5);
         jScrollPane3.setViewportView(txtAOutput);
+
+        jTabbedPane1.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+
+        pnlFileControls.setBorder(javax.swing.BorderFactory.createTitledBorder("File Controls"));
+
+        btnLoadFromFile.setText("Load From File");
+        btnLoadFromFile.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLoadFromFileActionPerformed(evt);
+            }
+        });
+
+        btnSaveToFile.setText("Save To File");
+        btnSaveToFile.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSaveToFileActionPerformed(evt);
+            }
+        });
+
+        lblFileWarning.setFont(new java.awt.Font("Microsoft YaHei UI", 2, 9)); // NOI18N
+        lblFileWarning.setForeground(new java.awt.Color(255, 0, 0));
+        lblFileWarning.setText("Warning");
+
+        javax.swing.GroupLayout pnlFileControlsLayout = new javax.swing.GroupLayout(pnlFileControls);
+        pnlFileControls.setLayout(pnlFileControlsLayout);
+        pnlFileControlsLayout.setHorizontalGroup(
+            pnlFileControlsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlFileControlsLayout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addGroup(pnlFileControlsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnLoadFromFile, javax.swing.GroupLayout.DEFAULT_SIZE, 136, Short.MAX_VALUE)
+                    .addComponent(btnSaveToFile, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(lblFileWarning, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        pnlFileControlsLayout.setVerticalGroup(
+            pnlFileControlsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlFileControlsLayout.createSequentialGroup()
+                .addComponent(btnLoadFromFile)
+                .addGap(18, 18, 18)
+                .addComponent(btnSaveToFile)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lblFileWarning)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("File Controls", pnlFileControls);
+
+        pnlSearch.setBorder(javax.swing.BorderFactory.createTitledBorder("ID Search"));
+
+        lblTargetID.setText("Target ID:");
+
+        lblSearchWarning.setFont(new java.awt.Font("Microsoft YaHei UI", 2, 9)); // NOI18N
+        lblSearchWarning.setForeground(new java.awt.Color(255, 0, 0));
+        lblSearchWarning.setText("Warning");
+
+        btnConfirmSearch.setText("Confirm");
+        btnConfirmSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConfirmSearchActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout pnlSearchLayout = new javax.swing.GroupLayout(pnlSearch);
+        pnlSearch.setLayout(pnlSearchLayout);
+        pnlSearchLayout.setHorizontalGroup(
+            pnlSearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlSearchLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblTargetID)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(txtTargetID, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(60, Short.MAX_VALUE))
+            .addComponent(lblSearchWarning, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlSearchLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnConfirmSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18))
+        );
+        pnlSearchLayout.setVerticalGroup(
+            pnlSearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlSearchLayout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addGroup(pnlSearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblTargetID, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtTargetID))
+                .addGap(36, 36, 36)
+                .addComponent(lblSearchWarning)
+                .addGap(18, 18, 18)
+                .addComponent(btnConfirmSearch)
+                .addGap(36, 36, 36))
+        );
+
+        jTabbedPane1.addTab("Search By ID", pnlSearch);
 
         javax.swing.GroupLayout pnlStoredEntriesLayout = new javax.swing.GroupLayout(pnlStoredEntries);
         pnlStoredEntries.setLayout(pnlStoredEntriesLayout);
@@ -404,8 +531,10 @@ public class ExpenseTrackerApp extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(pnlStoredEntriesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(pnlTotalExpense, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(pnlFileControls, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addGroup(pnlStoredEntriesLayout.createSequentialGroup()
+                        .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlStoredEntriesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(pnlDisplayControls, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jScrollPane3))
@@ -414,11 +543,12 @@ public class ExpenseTrackerApp extends javax.swing.JFrame {
         pnlStoredEntriesLayout.setVerticalGroup(
             pnlStoredEntriesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlStoredEntriesLayout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(pnlStoredEntriesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(pnlDisplayControls, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(pnlFileControls, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addGroup(pnlStoredEntriesLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(pnlDisplayControls, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTabbedPane1))
+                .addGap(18, 18, 18)
                 .addGroup(pnlStoredEntriesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(pnlTotalExpense, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jScrollPane3))
@@ -448,7 +578,7 @@ public class ExpenseTrackerApp extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(pnlNewEntry, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(pnlStoredEntries, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -517,16 +647,19 @@ public class ExpenseTrackerApp extends javax.swing.JFrame {
 
     private void btnSaveToFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveToFileActionPerformed
         // TODO add your handling code here:
-        try {
-            FileHandler.saveExpensesToFile(manager.getExpenses(), "expenses.txt");
-            lblFileWarning.setText("Expenses saved to file successfully!\n");
-            lblFileWarning.setForeground(Color.blue);
-            lblFileWarning.setVisible(true);
-        } catch (IOException ex) {
-            lblFileWarning.setText("Error saving expenses to file.\n");
-            lblFileWarning.setForeground(Color.red);
-            lblFileWarning.setVisible(true);
-        }
+        dlgSaveConfirmWindow.setVisible(true);
+        dlgSaveConfirmWindow.setAlwaysOnTop(true);
+        dlgSaveConfirmWindow.pack();
+//        try {
+//            FileHandler.saveExpensesToFile(manager.getExpenses(), "expenses.txt");
+//            lblFileWarning.setText("Expenses saved to file successfully!\n");
+//            lblFileWarning.setForeground(Color.blue);
+//            lblFileWarning.setVisible(true);
+//        } catch (IOException ex) {
+//            lblFileWarning.setText("Error saving expenses to file.\n");
+//            lblFileWarning.setForeground(Color.red);
+//            lblFileWarning.setVisible(true);
+//        }
     }//GEN-LAST:event_btnSaveToFileActionPerformed
 
     private void btnLoadFromFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoadFromFileActionPerformed
@@ -599,6 +732,50 @@ public class ExpenseTrackerApp extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtEntryTitleActionPerformed
 
+    private void btnConfirmSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmSearchActionPerformed
+        // TODO add your handling code here:
+        String targetID=txtTargetID.getText();
+        int result;
+        //no input check needed, if ID doesn't match anything in the file it would just return -1
+        manager.sortExpensesByID(); //sort the list by ID for binary search
+        result=searchByID(manager.getExpenses(), targetID, 0, (manager.getExpenses().size()-1));
+        
+        if(result==-1){ //if target not found
+            lblSearchWarning.setText("Target does not exist in data base.");
+            lblSearchWarning.setForeground(Color.red);
+            lblSearchWarning.setVisible(true);
+        }else{
+            Expense target=manager.getExpenses().get(result);
+            updateDisplay(target);
+            
+            lblSearchWarning.setText("Target found.");
+            lblSearchWarning.setForeground(Color.blue);
+            lblSearchWarning.setVisible(true);
+        }
+    }//GEN-LAST:event_btnConfirmSearchActionPerformed
+
+    private void btnConcleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConcleActionPerformed
+        // TODO add your handling code here:
+        dlgSaveConfirmWindow.dispose();
+    }//GEN-LAST:event_btnConcleActionPerformed
+
+    private void btnConfirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmActionPerformed
+        // TODO add your handling code here:
+                // TODO add your handling code here:
+        try {
+            FileHandler.saveExpensesToFile(manager.getExpenses(), "expenses.txt");
+            lblFileWarning.setText("Expenses saved to file successfully!\n");
+            lblFileWarning.setForeground(Color.blue);
+            lblFileWarning.setVisible(true);
+        } catch (IOException ex) {
+            lblFileWarning.setText("Error saving expenses to file.\n");
+            lblFileWarning.setForeground(Color.red);
+            lblFileWarning.setVisible(true);
+        }
+        
+        dlgSaveConfirmWindow.dispose();
+    }//GEN-LAST:event_btnConfirmActionPerformed
+
     //Custom Methods
     
 //    private void updateLstTiles(){
@@ -629,6 +806,26 @@ public class ExpenseTrackerApp extends javax.swing.JFrame {
 //        lstTiles.setListData(names);
 //    }
     
+    public static int searchByID(List<Expense> list, String targetID, int low, int high){   //Just let low be 0 and high be (the size of the list)-1
+           
+            if(low>high){   //item not found
+                return -1;
+            }
+            int mid=low+(high-low)/2;
+            //Base case
+            if(list.get(mid).getID().equals(targetID)){
+                return mid;
+            }
+            
+            if(list.get(mid).getID().compareTo(targetID)>0){    //if the found item is greater in comparison
+                high=mid-1;
+                return searchByID(list,targetID,low,high);
+            }else{  //if the found item is smaller in comparison
+                low=mid+1;
+                return searchByID(list,targetID,low,high);
+            }
+        }
+    
     private void updateDisplay(List<Expense> l){ //TODO: polish up
         List<Expense> allExpenses = l;
             if (allExpenses.isEmpty()) {
@@ -640,6 +837,13 @@ public class ExpenseTrackerApp extends javax.swing.JFrame {
                     txtAOutput.append(expense.toString() + "\n");
                 }
             }
+    }
+    
+    //Methode overloading
+    private void updateDisplay(Expense o){ //For Id search displaying
+        txtAOutput.setText(""); //Clear the text area
+        txtAOutput.append(o.toString() + "\n");
+                
     }
     
     /**
@@ -680,6 +884,9 @@ public class ExpenseTrackerApp extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCalculate;
     private javax.swing.JButton btnCategorySort;
+    private javax.swing.JButton btnConcle;
+    private javax.swing.JButton btnConfirm;
+    private javax.swing.JButton btnConfirmSearch;
     private javax.swing.JButton btnDateSort;
     private javax.swing.JButton btnDisplayRange;
     private javax.swing.JButton btnLoadFromFile;
@@ -687,25 +894,32 @@ public class ExpenseTrackerApp extends javax.swing.JFrame {
     private javax.swing.JButton btnPriceSort;
     private javax.swing.JButton btnSaveToFile;
     private javax.swing.JComboBox<String> cmbxCategory;
+    private javax.swing.JDialog dlgSaveConfirmWindow;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JLabel lblCategory;
+    private javax.swing.JLabel lblConfirmWindownTitle;
     private javax.swing.JLabel lblDate;
     private javax.swing.JLabel lblDescription;
     private javax.swing.JLabel lblEndDate;
     private javax.swing.JLabel lblEntryTitle;
     private javax.swing.JLabel lblFileWarning;
+    private javax.swing.JLabel lblInfo;
     private javax.swing.JLabel lblNewEntryWarning;
     private javax.swing.JLabel lblPrice;
     private javax.swing.JLabel lblRangeWarning;
+    private javax.swing.JLabel lblSearchWarning;
     private javax.swing.JLabel lblStartDate;
+    private javax.swing.JLabel lblTargetID;
     private javax.swing.JLabel lblTitle;
     private javax.swing.JLabel lblTotalExpense;
     private javax.swing.JPanel pnlDisplayControls;
     private javax.swing.JPanel pnlFileControls;
     private javax.swing.JPanel pnlNewEntry;
     private javax.swing.JPanel pnlRangeSort;
+    private javax.swing.JPanel pnlSearch;
     private javax.swing.JPanel pnlStoredEntries;
     private javax.swing.JPanel pnlTotalExpense;
     private javax.swing.JTextArea txtADescription;
@@ -715,6 +929,7 @@ public class ExpenseTrackerApp extends javax.swing.JFrame {
     private javax.swing.JTextField txtEntryTitle;
     private javax.swing.JTextField txtPrice;
     private javax.swing.JTextField txtStartDate;
+    private javax.swing.JTextField txtTargetID;
     private javax.swing.JTextField txtTotalExpense;
     // End of variables declaration//GEN-END:variables
 }

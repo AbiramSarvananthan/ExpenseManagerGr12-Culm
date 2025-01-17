@@ -33,6 +33,12 @@ public class ExpenseManager {
         sorted.sort(Comparator.comparing(Expense::getCategory));
         return sorted;
     }
+    
+    public List<Expense> sortExpensesByID(){    //sorting the list by ID, basically a carbon copy of sort methods above
+        List<Expense> sorted = new ArrayList<>(expenses);
+        sorted.sort(Comparator.comparing(Expense::getID));
+        return sorted;
+    }
 
     public double calculateTotalExpenses() {
         return expenses.stream().mapToDouble(Expense::getPrice).sum();
