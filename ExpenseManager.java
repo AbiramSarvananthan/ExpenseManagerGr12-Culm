@@ -52,7 +52,7 @@ public class ExpenseManager {
     public int duplicatedID(String id){
         int duplicateAmount=0;
         for(Expense i:expenses){    //Linear search through the program, not the most efficient way
-            if(id.equals(i.getID().substring(0,5))){
+            if(id.equals(i.getID().substring(0,11))){
                 duplicateAmount++;
             }
         }
