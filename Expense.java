@@ -10,13 +10,17 @@ public class Expense implements Comparable<Expense> {
     private String id;
     private boolean isNewlyCreated; //to extinguish between a newly created Expense and one read from the file
 
+    //Creating a new object
     public Expense(double price, String date, String description, String category, String title) throws IllegalArgumentException {
+        //Checks if date is balid and throws a error
         if (!isValidDate(date)) {
             throw new IllegalArgumentException("Invalid date format. Use YYYY-MM-DD, and ensure the year is within 20th/21st century.");
         }
+        //Checks if price is a valid input
         if(price<=0){
             throw new IllegalArgumentException("Invalid Price. Please make sure the value is greater than zero.");
         }
+        //Checks if title is blank or above 25
         if(title.isBlank()||title.length()>25){
             throw new IllegalArgumentException("Invalid Title. Please make sure its length is between 0 and 25 characters");
         }
@@ -45,6 +49,7 @@ public class Expense implements Comparable<Expense> {
         if(title.isBlank()||title.length()>25){
             throw new IllegalArgumentException("Invalid Title. Please make sure its length is between 0 and 25 characters");
         }
+        //setting variabeles
         this.price = price;
         this.date = date;
         this.description = description;
@@ -53,7 +58,9 @@ public class Expense implements Comparable<Expense> {
         //read from file
         this.id=id;
         isNewlyCreated=false;   
-    }
+    }   
+
+    //Getter and setter methods
     
     public double getPrice() {
         return price;

@@ -1,6 +1,7 @@
 import java.io.*;
 import java.util.*;
 
+//Method to save the expenses to files
 class FileHandler {
     public static void saveExpensesToFile(List<Expense> expenses, String fileName) throws IOException {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName))) {
@@ -12,6 +13,7 @@ class FileHandler {
         }
     }
 
+    //Method to load expenses from the file chosen, then split up into sections to use for other parts
     public static List<Expense> loadExpensesFromFile(String fileName) throws IOException {
         List<Expense> expenses = new ArrayList<>();
         try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
