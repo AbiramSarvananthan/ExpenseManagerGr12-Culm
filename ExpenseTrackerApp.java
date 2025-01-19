@@ -195,12 +195,6 @@ public class ExpenseTrackerApp extends javax.swing.JFrame {
 
         lblEntryTitle.setText("Title:");
 
-        txtEntryTitle.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtEntryTitleActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout pnlNewEntryLayout = new javax.swing.GroupLayout(pnlNewEntry);
         pnlNewEntry.setLayout(pnlNewEntryLayout);
         pnlNewEntryLayout.setHorizontalGroup(
@@ -344,12 +338,6 @@ public class ExpenseTrackerApp extends javax.swing.JFrame {
 
         lblStartDate.setText("From: (YYYY-MM-DD)");
 
-        txtStartDate.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtStartDateActionPerformed(evt);
-            }
-        });
-
         lblEndDate.setText("Ends: (YYYY-MM-DD)");
 
         btnDisplayRange.setText("Display Range");
@@ -454,11 +442,6 @@ public class ExpenseTrackerApp extends javax.swing.JFrame {
         lblTotalExpense.setText("Total Expense:");
 
         txtTotalExpense.setEditable(false);
-        txtTotalExpense.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtTotalExpenseActionPerformed(evt);
-            }
-        });
 
         btnCalculate.setText("Calculate");
         btnCalculate.addActionListener(new java.awt.event.ActionListener() {
@@ -904,7 +887,7 @@ public class ExpenseTrackerApp extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
+        /* Set the Windows look and feel */
         // <editor-fold defaultstate="collapsed" desc=" Look and feel setting code
         // (optional) ">
         /*
