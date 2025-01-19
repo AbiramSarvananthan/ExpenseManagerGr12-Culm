@@ -675,6 +675,10 @@ public class ExpenseTrackerApp extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+
+    //Button method
+
+    //Sort list by date
     private void btnDateSortActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnDateSortActionPerformed
         //Sorts expenses by the date
         List<Expense> sortedByDate = manager.sortExpensesByDate();
@@ -682,6 +686,7 @@ public class ExpenseTrackerApp extends javax.swing.JFrame {
         updateDisplay(sortedByDate);
     }// GEN-LAST:event_btnDateSortActionPerformed
 
+    //Sort list by category
     private void btnCategorySortActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnCategorySortActionPerformed
         //Sorts expenses by category
         List<Expense> sortedByCategory = manager.sortExpensesByCategory();
@@ -689,14 +694,7 @@ public class ExpenseTrackerApp extends javax.swing.JFrame {
         updateDisplay(sortedByCategory);
     }// GEN-LAST:event_btnCategorySortActionPerformed
 
-    private void txtStartDateActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_txtStartDateActionPerformed
-        // TODO add your handling code here:
-    }// GEN-LAST:event_txtStartDateActionPerformed
-
-    private void txtTotalExpenseActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_txtTotalExpenseActionPerformed
-        // TODO add your handling code here:
-    }// GEN-LAST:event_txtTotalExpenseActionPerformed
-
+    //Create a new expense inside expense manager's list
     private void btnNewEntryActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnNewEntryActionPerformed
         // TODO add your handling code here:
         //Parses and checks for errors
@@ -729,6 +727,7 @@ public class ExpenseTrackerApp extends javax.swing.JFrame {
         updateDisplay(manager.getExpenses()); // update the display right after a new entry is added
     }// GEN-LAST:event_btnNewEntryActionPerformed
 
+    //Write curret to file
     private void btnSaveToFileActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnSaveToFileActionPerformed
         // TODO add your handling code here:
         dlgSaveConfirmWindow.setVisible(true);
@@ -737,6 +736,7 @@ public class ExpenseTrackerApp extends javax.swing.JFrame {
     
     }// GEN-LAST:event_btnSaveToFileActionPerformed
 
+    //Load list from file
     private void btnLoadFromFileActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnLoadFromFileActionPerformed
         // TODO add your handling code here:
         try {
@@ -763,6 +763,7 @@ public class ExpenseTrackerApp extends javax.swing.JFrame {
         }
     }// GEN-LAST:event_btnLoadFromFileActionPerformed
 
+    //Sort list by price
     private void btnPriceSortActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnPriceSortActionPerformed
         // TODO add your handling code here:
         List<Expense> sortedByPrice = manager.sortExpensesByPriceBubbleSort();
@@ -774,12 +775,14 @@ public class ExpenseTrackerApp extends javax.swing.JFrame {
         updateDisplay(sortedByPrice);
     }// GEN-LAST:event_btnPriceSortActionPerformed
 
+    //Calcluate the total expense value from the current list
     private void btnCalculateActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnCalculateActionPerformed
         // TODO add your handling code here:
         double total = manager.calculateTotalExpensesRecursive();
         txtTotalExpense.setText("$" + total);
     }// GEN-LAST:event_btnCalculateActionPerformed
 
+    //Display expenses only inside the range
     private void btnDisplayRangeActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnDisplayRangeActionPerformed
         // TODO add your handling code here:
         String startDate = txtStartDate.getText();
@@ -806,10 +809,7 @@ public class ExpenseTrackerApp extends javax.swing.JFrame {
         }
     }// GEN-LAST:event_btnDisplayRangeActionPerformed
 
-    private void txtEntryTitleActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_txtEntryTitleActionPerformed
-        // TODO add your handling code here:
-    }// GEN-LAST:event_txtEntryTitleActionPerformed
-
+    //Search by id
     private void btnConfirmSearchActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnConfirmSearchActionPerformed
         // TODO add your handling code here:
         String targetID = txtTargetID.getText();
@@ -833,11 +833,13 @@ public class ExpenseTrackerApp extends javax.swing.JFrame {
         }
     }// GEN-LAST:event_btnConfirmSearchActionPerformed
 
+    //Only for file handling popup, closes the window
     private void btnConcleActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnConcleActionPerformed
         // TODO add your handling code here:
         dlgSaveConfirmWindow.dispose();
     }// GEN-LAST:event_btnConcleActionPerformed
 
+    //only for file handling popup, proceed with saving the list to file
     private void btnConfirmActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnConfirmActionPerformed
         // TODO add your handling code here:
         // TODO add your handling code here:
@@ -855,6 +857,7 @@ public class ExpenseTrackerApp extends javax.swing.JFrame {
         dlgSaveConfirmWindow.dispose();
     }// GEN-LAST:event_btnConfirmActionPerformed
 
+    //Custom Method
     //Method to searchById using binary search and recursion
     public static int searchByID(List<Expense> list, String targetID, int low, int high) { // Just let low be 0 and high
                                                                                            // be (the size of the
@@ -878,7 +881,7 @@ public class ExpenseTrackerApp extends javax.swing.JFrame {
         }
     }
 
-    private void updateDisplay(List<Expense> l) { 
+    private void updateDisplay(List<Expense> l) { //uses by every actions that modifies the file in anyway
         List<Expense> allExpenses = l;
         if (allExpenses.isEmpty()) {
             txtAOutput.setText("No expenses to display.\n");
@@ -891,7 +894,7 @@ public class ExpenseTrackerApp extends javax.swing.JFrame {
     }
 
     // Method overloading
-    private void updateDisplay(Expense o) { // For Id search displaying
+    private void updateDisplay(Expense o) { // For Id search displaying only
         txtAOutput.setText(""); // Clear the text area
         txtAOutput.append(o.toString() + "\n");
 
