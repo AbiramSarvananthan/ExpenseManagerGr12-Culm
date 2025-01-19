@@ -12,7 +12,11 @@ public class ExpenseManager {
         validateDateFormat(expense.getDate());
         //finish ID creation if the expense is not read from file
         if(expense.getIsNewlyCreated()){
-            expense.setID(expense.getID()+Integer.toString(duplicatedID(expense.getID()))); //Attempt to generate a unique ID       
+            int duplicatedAmount=duplicatedID(expense.getID());
+            if(duplicatedAmount>9){
+                throw(new IllegalArgumentException("You can not have more than 9 entries per day!"));
+            }
+            expense.setID(expense.getID()+Integer.toString(duplicatedAmount)); //Attempt to generate a unique ID       
         }
         expenses.add(expense);
     }
