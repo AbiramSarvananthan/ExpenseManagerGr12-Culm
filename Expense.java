@@ -30,9 +30,8 @@ public class Expense implements Comparable<Expense> {
         this.category = category;
         this.title=title;
         
-        //Generate an basic ID 
-        String[] dateSplited=date.split("-");
-        this.id=dateSplited[0]+category.substring(0,1).toUpperCase(); //YYYY<Initial of the category in capital>
+        ///Generate an basic ID 
+        this.id=date+category.substring(0,1).toUpperCase(); 
         
         //Newly created
         isNewlyCreated=true;
