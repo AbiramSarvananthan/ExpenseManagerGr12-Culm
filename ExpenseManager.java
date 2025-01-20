@@ -12,9 +12,13 @@ public class ExpenseManager {
     public void addExpense(Expense expense) {
         validateDateFormat(expense.getDate());  // Validate the date format of the expense
         // If the expense is newly created, generate a unique ID
-        if (expense.getIsNewlyCreated()) {
-            // Generate a unique ID by appending a duplicate count to the existing ID
-            expense.setID(expense.getID() + Integer.toString(duplicatedID(expense.getID())));
+        if(expense.getIsNewlyCreated()){
+            int duplicatedAmount=duplicatedID(expense.getID());
+            if(duplicatedAmount>9){ //Limit the max duplicate amount to 9 to avoid issues arraises from longer string length
+                throw(new IllegalArgumentException("You can not have more than 9 entries per day!"));
+            }
+           // Generate a unique ID by appending a duplicate count to the existing ID
+            expense.setID(expense.getID()+Integer.toString(duplicatedAmount)); //Attempt to generate a unique ID       
         }
         expenses.add(expense);  // Add the expense to the list
     }
